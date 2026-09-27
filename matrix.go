@@ -85,11 +85,12 @@ func MatTrans(a Matrix) Matrix {
 	return m
 }
 
-func MatApply(a Matrix, f func(float64) float64 {
+func MatApply(a Matrix, f func(float64) float64) Matrix {
 	m := NewMatrix(a.Rows(), a.Cols())
 	for i := range a.Rows() {
 		for j := range a.Cols() {
-			m[i][j] = f(m[i][j])
+			m[i][j] = f(a[i][j])
 		}
 	}
 	return m
+}

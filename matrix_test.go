@@ -17,9 +17,9 @@ func eq(a, b Matrix) bool {
 }
 
 var (
-	a = Matrix{{1, 2, 3}, {4, 5, 6}}          // 2x3
-	b = Matrix{{7, 8}, {9, 10}, {11, 12}}     // 3x2
-	c = Matrix{{1, 2}, {3, 4}}                // 2x2
+	a = Matrix{{1, 2, 3}, {4, 5, 6}}      // 2x3
+	b = Matrix{{7, 8}, {9, 10}, {11, 12}} // 3x2
+	c = Matrix{{1, 2}, {3, 4}}            // 2x2
 )
 
 func TestNewMatrix(t *testing.T) {
@@ -62,7 +62,7 @@ func TestMatMulPanicsOnMismatch(t *testing.T) {
 }
 
 func TestT(t *testing.T) {
-	got := a.T()
+	got := MatTrans(a)
 	want := Matrix{{1, 4}, {2, 5}, {3, 6}}
 	if !eq(got, want) {
 		t.Fatalf("A.T = %v, want %v", got, want)
@@ -70,7 +70,7 @@ func TestT(t *testing.T) {
 }
 
 func TestTInvolution(t *testing.T) {
-	if !eq(a.T().T(), a) {
+	if !eq(MatTrans(MatTrans(a)), a) {
 		t.Fatalf("(A.T).T != A")
 	}
 }
