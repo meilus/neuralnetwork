@@ -31,6 +31,20 @@ func MatNeg(a Matrix) Matrix {
 	return m
 }
 
+func MatAddRow(a, b Matrix) Matrix {
+	if b.Rows() != 1 {
+		panic("row or column missmatch")
+	}
+
+	m := NewMatrix(a.Rows(), a.Cols())
+	for i := range a.Rows() {
+		for j := range a.Cols() {
+			m[i][j] = a[i][j] + b[0][j]
+		}
+	}
+	return m
+}
+
 func MatAdd(a, b Matrix) Matrix {
 	if a.Rows() != b.Rows() || a.Cols() != b.Cols() {
 		panic("row or column missmatch")
