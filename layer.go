@@ -71,10 +71,10 @@ func (d *Dense) Forward(X Matrix) Matrix {
 //
 // The chain rule, step by step:
 //
-//	1. through the activation: dZ = gradOut ⊙ act'(Z)      (element-wise)
-//	2. weight gradient:        dW = Xᵀ · dZ                (in×out, matches W)
-//	3. bias gradient:          dB = column-sum of dZ       (1×out, matches B)
-//	4. to previous layer:      dX = dZ · Wᵀ                (n×in, matches X)
+//  1. through the activation: dZ = gradOut ⊙ act'(Z)      (element-wise)
+//  2. weight gradient:        dW = Xᵀ · dZ                (in×out, matches W)
+//  3. bias gradient:          dB = column-sum of dZ       (1×out, matches B)
+//  4. to previous layer:      dX = dZ · Wᵀ                (n×in, matches X)
 //
 // Nothing is subtracted here. This only produces gradients; the optimizer
 // later does W = W - lr*dW.
